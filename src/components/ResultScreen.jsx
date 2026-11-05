@@ -1,7 +1,7 @@
 import ScoreBoard from './ScoreBoard.jsx'
 import styles from './ResultScreen.module.css'
 
-function ResultScreen({ score, totalQuestions, onRestart }) {
+function ResultScreen({ score, totalQuestions, highScore, onRestart }) {
   return (
     <section className={styles.result} aria-labelledby="result-title">
       <div className={styles.confetti} aria-hidden="true">
@@ -14,6 +14,7 @@ function ResultScreen({ score, totalQuestions, onRestart }) {
 
       <div className={styles.resultCard}>
         <ScoreBoard score={score} totalQuestions={totalQuestions} compact />
+        <p className={styles.bestScore}>Personal best: <strong>{highScore}</strong></p>
         <div className={styles.message}>
           <span aria-hidden="true">🌱</span>
           <p>Every quiz is a chance to learn something new. Keep that curiosity going!</p>

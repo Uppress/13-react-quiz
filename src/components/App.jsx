@@ -5,9 +5,15 @@ import Question from './Question.jsx'
 import ResultScreen from './ResultScreen.jsx'
 import StartScreen from './StartScreen.jsx'
 import { decodeHtml, shuffle } from '../data/trivia.js'
+import useLocalStorageState from '../hooks/useLocalStorageState.js'
 import styles from './App.module.css'
 
 const QUESTION_SECONDS = 15
+const DEFAULT_SETTINGS = {
+  category: '9',
+  difficulty: 'easy',
+  questionCount: 10,
+}
 
 const initialQuiz = {
   screen: 'start',
@@ -17,7 +23,22 @@ const initialQuiz = {
   questionIndex: 0,
   score: 0,
   seconds: QUESTION_SECONDS,
+  selectedAnswer: null,
+  feedback: '',
   error: null,
+}
+
+function advanceQuestion(state) {
+  if (state.questionIndex === state.questions.length - 1) {
+    return { ...state, screen: 'result' }
+  }
+  return {
+    ...state,
+    questionIndex: state.questionIndex + 1,
+    seconds: QUESTION_SECONDS,
+    selectedAnswer: null,
+    feedback: '',
+  }
 }
 
 function quizReducer(state, action) {
@@ -38,35 +59,33 @@ function quizReducer(state, action) {
         questionIndex: 0,
         score: 0,
         seconds: QUESTION_SECONDS,
+        selectedAnswer: null,
+        feedback: '',
         error: null,
       }
     case 'LOAD_ERROR':
       return { ...state, screen: 'error', error: action.error }
-    case 'ANSWER': {
+    case 'SELECT_ANSWER': {
       if (state.screen !== 'question') return state
       const currentQuestion = state.questions[state.questionIndex]
-      const score = state.score + Number(action.answer === currentQuestion.correctAnswer)
-      if (state.questionIndex === state.questions.length - 1) {
-        return { ...state, screen: 'result', score }
-      }
       return {
         ...state,
-        questionIndex: state.questionIndex + 1,
-        score,
-        seconds: QUESTION_SECONDS,
+        selectedAnswer: action.answer,
+        score: state.score
+          - Number(state.selectedAnswer === currentQuestion.correctAnswer)
+          + Number(action.answer === currentQuestion.correctAnswer),
+        feedback: action.answer === currentQuestion.correctAnswer
+          ? 'Correct! Great job.'
+          : `Not quite. The correct answer is ${currentQuestion.correctAnswer}.`,
       }
     }
+    case 'NEXT':
+      if (state.screen !== 'question' || state.selectedAnswer === null) return state
+      return advanceQuestion(state)
     case 'tick': {
       if (state.screen !== 'question') return state
       if (state.seconds > 1) return { ...state, seconds: state.seconds - 1 }
-      if (state.questionIndex === state.questions.length - 1) {
-        return { ...state, screen: 'result', seconds: 0 }
-      }
-      return {
-        ...state,
-        questionIndex: state.questionIndex + 1,
-        seconds: QUESTION_SECONDS,
-      }
+      return advanceQuestion({ ...state, seconds: 0 })
     }
     case 'BACK_TO_START':
       return initialQuiz
@@ -92,6 +111,15 @@ function App() {
   const [categoryStatus, setCategoryStatus] = useState('loading')
   const [categoryError, setCategoryError] = useState(null)
   const [categoryRetry, setCategoryRetry] = useState(0)
+  const [highScore, setHighScore] = useLocalStorageState('quizzy:high-score', 0)
+  const [lastSettings, setLastSettings] = useLocalStorageState(
+    'quizzy:last-settings',
+    DEFAULT_SETTINGS,
+  )
+
+  useEffect(() => {
+    if (quiz.screen === 'result' && quiz.score > highScore) setHighScore(quiz.score)
+  }, [quiz.screen, quiz.score, highScore, setHighScore])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -175,6 +203,7 @@ function App() {
   }, [quiz.screen, quiz.settings, quiz.requestId])
 
   function startQuiz(settings) {
+    setLastSettings(settings)
     dispatch({ type: 'START', settings })
   }
 
@@ -220,6 +249,8 @@ function App() {
       {quiz.screen === 'start' && (
         <StartScreen
           categories={categories}
+          defaultSettings={lastSettings}
+          highScore={highScore}
           categoryStatus={categoryStatus}
           categoryError={categoryError}
           onRetryCategories={retryCategories}
@@ -245,7 +276,8 @@ function App() {
           totalQuestions={quiz.questions.length}
           score={quiz.score}
           seconds={quiz.seconds}
-          onAnswer={(answer) => dispatch({ type: 'ANSWER', answer })}
+          selectedAnswer={quiz.selectedAnswer}
+          feedback={quiz.feedback}
           dispatch={dispatch}
         />
       )}
@@ -253,6 +285,7 @@ function App() {
         <ResultScreen
           score={quiz.score}
           totalQuestions={quiz.questions.length}
+          highScore={highScore}
           onRestart={restartQuiz}
         />
       )}

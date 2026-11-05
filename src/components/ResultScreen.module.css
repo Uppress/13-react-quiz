@@ -72,6 +72,17 @@
   background: #f5f3ff;
 }
 
+.bestScore {
+  margin-top: 11px;
+  color: #898596;
+  font-size: 11px;
+  text-align: right;
+}
+
+.bestScore strong {
+  color: #5f52d4;
+}
+
 .message > span { font-size: 20px; }
 
 .message p {

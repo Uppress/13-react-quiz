@@ -4,6 +4,8 @@ import Loading from './Loading.jsx'
 
 function StartScreen({
   categories,
+  defaultSettings,
+  highScore,
   categoryStatus,
   categoryError,
   onRetryCategories,
@@ -40,7 +42,10 @@ function StartScreen({
             <h2>Make it yours</h2>
             <p>Set up your perfect little quiz.</p>
           </div>
-          <span className={styles.cardIcon} aria-hidden="true">✎</span>
+          <div className={styles.headingSide}>
+            <span className={styles.cardIcon} aria-hidden="true">✎</span>
+            <span className={styles.highScore}>Best: {highScore}</span>
+          </div>
         </div>
 
         <fieldset className={styles.categoryField}>
@@ -66,7 +71,10 @@ function StartScreen({
                     type="radio"
                     name="category"
                     value={category.id}
-                    defaultChecked={index === 0}
+                    defaultChecked={
+                      String(defaultSettings.category) === String(category.id) ||
+                      (!categories.some((item) => String(item.id) === String(defaultSettings.category)) && index === 0)
+                    }
                   />
                   <span className={styles.categoryIcon} aria-hidden="true">
                     {category.name.toLowerCase().includes('science') ? '🔬' :
@@ -83,7 +91,7 @@ function StartScreen({
         <div className={styles.selectRow}>
           <label className={styles.selectField}>
             <span>Difficulty</span>
-            <select name="difficulty" defaultValue="easy">
+            <select name="difficulty" defaultValue={defaultSettings.difficulty}>
               <option value="easy">Easy peasy</option>
               <option value="medium">A little tricky</option>
               <option value="hard">Brain bender</option>
@@ -91,7 +99,7 @@ function StartScreen({
           </label>
           <label className={styles.selectField}>
             <span>Questions</span>
-            <select name="questionCount" defaultValue="10">
+            <select name="questionCount" defaultValue={String(defaultSettings.questionCount)}>
               <option value="5">5 questions</option>
               <option value="10">10 questions</option>
               <option value="15">15 questions</option>
