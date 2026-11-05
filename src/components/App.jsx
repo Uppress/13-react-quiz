@@ -95,8 +95,6 @@ function App() {
 
   useEffect(() => {
     const controller = new AbortController()
-    setCategoryStatus('loading')
-    setCategoryError(null)
 
     async function loadCategories() {
       try {
@@ -114,7 +112,7 @@ function App() {
         setCategories(data.trivia_categories)
         setCategoryStatus('ready')
       } catch (error) {
-        if (error.name === 'AbortError') return
+        if (controller.signal.aborted || error.name === 'AbortError') return
         setCategoryError(error.message || 'Could not load categories. Please try again.')
         setCategoryStatus('error')
       }
@@ -164,7 +162,7 @@ function App() {
         if (controller.signal.aborted) return
         dispatch({ type: 'LOADED', questions: decodedQuestions })
       } catch (error) {
-        if (error.name === 'AbortError') return
+        if (controller.signal.aborted || error.name === 'AbortError') return
         dispatch({
           type: 'LOAD_ERROR',
           error: error.message || 'Could not load quiz questions. Please try again.',
@@ -182,6 +180,12 @@ function App() {
 
   function restartQuiz() {
     dispatch({ type: 'BACK_TO_START' })
+  }
+
+  function retryCategories() {
+    setCategoryError(null)
+    setCategoryStatus('loading')
+    setCategoryRetry((retry) => retry + 1)
   }
 
   const currentQuestion = quiz.questions[quiz.questionIndex]
@@ -218,7 +222,7 @@ function App() {
           categories={categories}
           categoryStatus={categoryStatus}
           categoryError={categoryError}
-          onRetryCategories={() => setCategoryRetry((retry) => retry + 1)}
+          onRetryCategories={retryCategories}
           onStart={startQuiz}
         />
       )}
