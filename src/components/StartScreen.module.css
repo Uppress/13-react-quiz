@@ -214,6 +214,16 @@
   background: #5949d8;
 }
 
+.startButton:disabled {
+  box-shadow: none;
+  background: #b6b0d7;
+  cursor: wait;
+}
+
+.startButton:disabled:hover {
+  transform: none;
+}
+
 .startButton:focus-visible {
   outline: 3px solid #a9a0ff;
   outline-offset: 3px;

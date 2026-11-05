@@ -106,10 +106,11 @@ function App() {
         if (!response.ok) throw new Error(`Could not load categories (HTTP ${response.status}).`)
 
         const data = await response.json()
-        if (!Array.isArray(data.trivia_categories)) {
+        if (!Array.isArray(data.trivia_categories) || data.trivia_categories.length === 0) {
           throw new Error('The trivia service returned an invalid category list.')
         }
 
+        if (controller.signal.aborted) return
         setCategories(data.trivia_categories)
         setCategoryStatus('ready')
       } catch (error) {
@@ -142,6 +143,7 @@ function App() {
         if (!response.ok) throw new Error(`Could not load quiz questions (HTTP ${response.status}).`)
 
         const data = await response.json()
+        if (controller.signal.aborted) return
         if (data.response_code !== 0) throw new Error(getApiError(data.response_code))
         if (!Array.isArray(data.results) || data.results.length === 0) {
           throw new Error('The trivia service did not return any questions. Please try again.')
@@ -159,6 +161,7 @@ function App() {
             ]),
           }
         })
+        if (controller.signal.aborted) return
         dispatch({ type: 'LOADED', questions: decodedQuestions })
       } catch (error) {
         if (error.name === 'AbortError') return
