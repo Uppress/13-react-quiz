@@ -1,0 +1,77 @@
+.error {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  color: #716575;
+  text-align: center;
+}
+
+.icon {
+  color: #df9b78;
+  font-size: 32px;
+}
+
+.error p {
+  max-width: 420px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 3px;
+}
+
+.actions button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.retry {
+  background: #6858e8;
+  color: white;
+}
+
+.back {
+  background: #f1eff7;
+  color: #665f79;
+}
+
+.actions button:focus-visible {
+  outline: 3px solid #a9a0ff;
+  outline-offset: 3px;
+}
+
+.compact {
+  min-height: 84px;
+  align-items: flex-start;
+  padding: 10px 0;
+  text-align: left;
+}
+
+.compact p {
+  color: #a45b59;
+  font-size: 11px;
+}
+
+.compact .actions {
+  margin-top: 0;
+}
+
+.compact .actions button {
+  min-height: 30px;
+  padding: 0 10px;
+}

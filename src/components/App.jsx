@@ -56,7 +56,7 @@ function quizReducer(state, action) {
         seconds: QUESTION_SECONDS,
       }
     }
-    case 'TICK': {
+    case 'tick': {
       if (state.screen !== 'question') return state
       if (state.seconds > 1) return { ...state, seconds: state.seconds - 1 }
       if (state.questionIndex === state.questions.length - 1) {
@@ -239,6 +239,7 @@ function App() {
           score={quiz.score}
           seconds={quiz.seconds}
           onAnswer={(answer) => dispatch({ type: 'ANSWER', answer })}
+          dispatch={dispatch}
         />
       )}
       {quiz.screen === 'result' && (

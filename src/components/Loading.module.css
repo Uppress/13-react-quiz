@@ -1,0 +1,42 @@
+.loading {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  color: #77718d;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.compact {
+  min-height: 84px;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 11px;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #eeebfa;
+  border-top-color: #6858e8;
+  border-radius: 50%;
+  animation: spin 750ms linear infinite;
+}
+
+.compact .spinner {
+  width: 18px;
+  height: 18px;
+  border-width: 2px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation-duration: 2s; }
+}

@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import styles from './Timer.module.css'
 
-function Timer({ seconds, onTick }) {
+function Timer({ seconds, dispatch }) {
   useEffect(() => {
-    const intervalId = window.setInterval(() => onTick(), 1000)
+    const intervalId = window.setInterval(() => dispatch({ type: 'tick' }), 1000)
     return () => window.clearInterval(intervalId)
-  }, [onTick])
+  }, [dispatch])
 
   const minutes = Math.floor(seconds / 60)
   const remainder = seconds % 60

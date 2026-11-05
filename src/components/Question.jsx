@@ -12,6 +12,7 @@ function Question({
   score,
   seconds,
   onAnswer,
+  dispatch,
 }) {
   const difficultyLabel = {
     easy: 'Easy peasy',
@@ -28,7 +29,7 @@ function Question({
           <span className={styles.tagDivider}>·</span>
           <span className={styles.difficulty}>{difficultyLabel}</span>
         </div>
-        <Timer seconds={seconds} onTick={() => onAnswer(null)} />
+        <Timer seconds={seconds} dispatch={dispatch} />
       </div>
 
       <ProgressBar current={questionNumber} total={totalQuestions} />
