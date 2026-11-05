@@ -1,0 +1,21 @@
+.timer {
+  display: inline-flex;
+  min-width: 70px;
+  height: 34px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid #f1e5d8;
+  border-radius: 99px;
+  background: #fff8f1;
+  color: #d78a42;
+  font-size: 12px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock {
+  font-size: 18px;
+  line-height: 1;
+}

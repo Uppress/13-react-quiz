@@ -1,0 +1,276 @@
+.start {
+  width: min(100%, 660px);
+  margin: 0 auto;
+  padding: 52px 0 28px;
+}
+
+.intro {
+  position: relative;
+  margin-bottom: 31px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #837b9c;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.eyebrow span {
+  margin-right: 5px;
+  color: #edab4f;
+}
+
+.intro h1 {
+  margin: 15px 0 10px;
+  color: #29263a;
+  font-size: clamp(35px, 5vw, 48px);
+  font-weight: 800;
+  letter-spacing: -2.7px;
+  line-height: 1.1;
+}
+
+.intro h1 span {
+  color: #6656e8;
+}
+
+.intro p {
+  color: #898597;
+  font-size: 14px;
+}
+
+.doodle {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  color: #f1ad57;
+  font-size: 25px;
+  transform: rotate(12deg);
+}
+
+.setupCard {
+  padding: 27px 30px 19px;
+  border: 1px solid #efedf4;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 45px rgb(46 35 89 / 6%);
+}
+
+.cardHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 23px;
+}
+
+.cardHeading h2 {
+  margin: 0 0 4px;
+  color: #302d40;
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.cardHeading p {
+  color: #9995a5;
+  font-size: 12px;
+}
+
+.cardIcon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 13px;
+  background: #f2efff;
+  color: #6a5be4;
+  font-size: 20px;
+}
+
+.categoryField {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.categoryField legend,
+.selectField > span {
+  margin-bottom: 10px;
+  color: #575366;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.categoryOption {
+  position: relative;
+  display: flex;
+  min-height: 84px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #524d60;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 680;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.categoryOption:hover {
+  transform: translateY(-2px);
+}
+
+.categoryOption input {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #6758e7;
+  opacity: 0;
+}
+
+.categoryOption:has(input:checked) {
+  border-color: #7669ea;
+  box-shadow: 0 0 0 2px rgb(103 88 231 / 11%);
+}
+
+.categoryOption:has(input:focus-visible) {
+  outline: 3px solid #9288f3;
+  outline-offset: 2px;
+}
+
+.categoryIcon {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.mint { background: #eff8f2; }
+.lilac { background: #f3f0ff; }
+.peach { background: #fff3e9; }
+.blue { background: #edf5ff; }
+
+.selectRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 21px;
+}
+
+.selectField {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectField select {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #e8e5ee;
+  border-radius: 9px;
+  background: #fff;
+  color: #514d60;
+  font: inherit;
+  font-size: 12px;
+}
+
+.startButton {
+  display: flex;
+  width: 100%;
+  height: 47px;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #6858e8;
+  box-shadow: 0 7px 15px rgb(101 83 224 / 20%);
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.startButton:hover {
+  transform: translateY(-1px);
+  background: #5949d8;
+}
+
+.startButton:focus-visible {
+  outline: 3px solid #a9a0ff;
+  outline-offset: 3px;
+}
+
+.startButton span {
+  font-size: 18px;
+}
+
+.finePrint {
+  margin-top: 13px;
+  color: #a29eac;
+  font-size: 10px;
+  text-align: center;
+}
+
+.finePrint span {
+  margin-right: 5px;
+  color: #edb355;
+}
+
+.bottomNote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  color: #a29eac;
+  font-size: 11px;
+}
+
+.bottomNote span:first-child { color: #ee9f8c; }
+.bottomNote span:last-child { color: #edb355; }
+
+@media (max-width: 600px) {
+  .start {
+    padding-top: 35px;
+  }
+
+  .doodle {
+    top: -8px;
+    right: 2px;
+    font-size: 19px;
+  }
+
+  .setupCard {
+    padding: 22px 18px 17px;
+  }
+
+  .categoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .categoryOption {
+    min-height: 68px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}

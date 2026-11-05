@@ -1,0 +1,63 @@
+.scoreboard {
+  padding: 20px;
+  border: 1px solid #efedf4;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgb(46 35 89 / 4%);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #8d8999;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.titleIcon {
+  color: #eead50;
+  font-size: 16px;
+}
+
+.score {
+  margin-top: 13px;
+  color: #302d40;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.score span {
+  color: #a6a2b0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.encouragement {
+  margin-top: 8px;
+  color: #898596;
+  font-size: 11px;
+}
+
+.miniTrack {
+  height: 5px;
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #f0eef5;
+}
+
+.miniTrack span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #8c7bef;
+}
+
+.compact {
+  padding: 18px 20px;
+}

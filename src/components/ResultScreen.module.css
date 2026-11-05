@@ -1,0 +1,118 @@
+.result {
+  position: relative;
+  width: min(100%, 570px);
+  margin: 0 auto;
+  padding: 50px 0 30px;
+  text-align: center;
+}
+
+.confetti span {
+  position: absolute;
+  color: #f1ae55;
+  font-size: 20px;
+}
+
+.confetti span:nth-child(1) { top: 64px; left: 12%; color: #8c7bef; }
+.confetti span:nth-child(2) { top: 110px; right: 12%; color: #ef9c91; font-size: 24px; }
+.confetti span:nth-child(3) { top: 198px; left: 7%; color: #82c8a4; }
+.confetti span:nth-child(4) { top: 40px; right: 24%; color: #f0b050; }
+.confetti span:nth-child(5) { top: 175px; right: 6%; color: #8c7bef; font-size: 25px; }
+
+.resultIcon {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  margin: 0 auto 15px;
+  border-radius: 26px;
+  background: #fff5e8;
+  font-size: 35px;
+  transform: rotate(-5deg);
+}
+
+.eyebrow {
+  color: #8e87a1;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 1.8px;
+}
+
+.result h1 {
+  margin: 11px 0 8px;
+  color: #302d40;
+  font-size: clamp(25px, 4vw, 34px);
+  font-weight: 800;
+  letter-spacing: -1.6px;
+}
+
+.result h1 span { color: #6858e8; }
+
+.subtitle {
+  color: #918d9c;
+  font-size: 12px;
+}
+
+.resultCard {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #efedf4;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 15px 40px rgb(46 35 89 / 6%);
+  text-align: left;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 17px;
+  padding: 13px;
+  border-radius: 10px;
+  background: #f5f3ff;
+}
+
+.message > span { font-size: 20px; }
+
+.message p {
+  color: #716c82;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.restartButton {
+  display: flex;
+  width: 100%;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 9px;
+  background: #6858e8;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.restartButton:hover { background: #5949d8; }
+
+.restartButton:focus-visible {
+  outline: 3px solid #a9a0ff;
+  outline-offset: 3px;
+}
+
+.signoff {
+  margin-top: 17px;
+  color: #aaa6b3;
+  font-size: 10px;
+}
+
+.signoff span { color: #ee9196; }
+
+@media (max-width: 600px) {
+  .result { padding-top: 34px; }
+}

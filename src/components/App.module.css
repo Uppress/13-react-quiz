@@ -1,0 +1,105 @@
+.app {
+  width: min(1120px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.header {
+  height: 88px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid #efedf4;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  color: #242135;
+  font-size: 23px;
+  font-weight: 850;
+  letter-spacing: -1.2px;
+  text-decoration: none;
+}
+
+.brandMark {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border-radius: 11px;
+  background: #6656e8;
+  color: white;
+  font-size: 20px;
+}
+
+.brandPeriod {
+  color: #f3a448;
+}
+
+.headerNote {
+  justify-self: center;
+  color: #817d91;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sparkle {
+  margin-right: 7px;
+  color: #f2a443;
+}
+
+.helpLink {
+  justify-self: end;
+  color: #6f6b7e;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.helpLink:hover,
+.helpLink:focus-visible {
+  color: #5e4fe0;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin-top: auto;
+  padding: 26px 0 22px;
+  color: #aaa6b5;
+  font-size: 11px;
+  font-weight: 550;
+}
+
+.footerHeart {
+  color: #ed8d92;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .app {
+    padding: 0 20px;
+  }
+
+  .header {
+    height: 72px;
+    grid-template-columns: 1fr auto;
+  }
+
+  .headerNote {
+    display: none;
+  }
+
+  .footer {
+    font-size: 10px;
+  }
+}
