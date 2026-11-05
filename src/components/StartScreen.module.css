@@ -77,6 +77,19 @@
   font-size: 12px;
 }
 
+.headingSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.highScore {
+  color: #8c86a0;
+  font-size: 9px;
+  font-weight: 700;
+}
+
 .cardIcon {
   display: grid;
   width: 38px;

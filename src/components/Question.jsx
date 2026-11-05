@@ -66,7 +66,9 @@ function Question({
             <span className={styles.mood}>You&apos;ve got this <span aria-hidden="true">✦</span></span>
           </div>
           <h1 id="question-title">{question.text}</h1>
-          <p className={styles.instruction}>Choose the answer that feels right.</p>
+          <p className={styles.instruction}>
+            Choose an answer, or press 1–4. Press Enter to continue.
+          </p>
 
           <div className={styles.answers} role="group" aria-label="Answer choices">
             {question.answers.map((answer, index) => (
